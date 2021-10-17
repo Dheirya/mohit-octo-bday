@@ -2,10 +2,11 @@
 <html>
 <head>
 <title>Happy Birthday Mohit Mama</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
-body{
+html, body{
  margin:0;
  padding: 0;
  display: flex;
@@ -13,6 +14,7 @@ body{
  align-items: center;
  min-height: 100vh;
  background-color: black;
+ touch-action: manipulation;
 }
 center {
 	z-index: 99999;
@@ -20,14 +22,14 @@ center {
 center h2{
  color:#fff;
  font: normal 300 64px/1 'Josefin Sans';
- font-size: 2.5em;
+ font-size: 3em;
  animation: animate 1.0s linear infinite;
  padding:5px;
 }
 center h1{
  color:#fff;
  font: normal 300 64px/1 'Josefin Sans';
- font-size: 3em;
+ font-size: 3.5em;
  animation: animate 0.5s linear infinite;
  margin-top: -25px;
 }
@@ -248,7 +250,7 @@ html, body {
   <div class="stars"></div>
   <div class="twinkling"></div>
   <div class="clouds"></div>
-  <center style="margin-left:-40px">
+  <center>
    <h2>Happy Birthday</h2>
    <h1><b>Mohit Mama</b></h1>
       <br/>
@@ -269,7 +271,7 @@ html, body {
   </center>
     <script src='https://unpkg.com/babel-standalone@6.26.0/babel.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.1/mo.min.js'></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>
     const clap = document.getElementById('clap')
 const clapIcon = document.getElementById('clap--icon')
 const clapCount = document.getElementById('clap--count')
@@ -382,18 +384,10 @@ function generateRandomNumber(min, max) {
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-/*====== TODO ==========
-1. Bug fix. The button shouldn't
-scale up before being clicked (fixed)
-2. Shadow should NOT fire hover
-animation in succession.
-Some sort of delay is delay. (Not that important)
-3. Hover animation should be
-absent upon click (Not that important)
-4. Handle onpress event on the button (Implemetaation is Buggy ATM)
-5. Dynamically change burst angle
-everytime button is clicked
-=========================*/
+$('body').bind('touchend', function(e) {
+  e.preventDefault();
+  $(this).click();
+})
 </script>
 </body>
 </html>
